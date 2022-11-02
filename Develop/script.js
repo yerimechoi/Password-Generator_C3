@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var special = ["!", ",", ".", "|", "@", "#", "$", "%", "^", "&", "*", "_", "+", "-", "=", "/"];
+var specialCharacters = ["!", ",", ".", "|", "@", "#", "$", "%", "^", "&", "*", "_", "+", "-", "=", "/"];
 
 function generatePassword() {
   var userChoiceLengths = window.prompt("How long do you want the password to be?\n(at least 8 characters and no more than 128 characters)");
@@ -47,38 +47,42 @@ function generatePassword() {
   } else {
     window.alert("Noted! :)")
   }
+  
+  var savedPassword = randomPassword(userChoiceLengths, userChoiceLowercase, userChoiceNumbers, userChoiceSpecialCharacters, userChoiceUppercase);
+  return savedPassword;
 }
 
 function randomPassword(userChoiceLengths, userChoiceLowercase, userChoiceNumbers, userChoiceSpecialCharacters, userChoiceUppercase) {
-  var result;
+  var result = [];
   if (userChoiceUppercase){
-    result = result.concat(userChoiceUppercase);
+    result = result.concat(uppercase);
   }
 
   if (userChoiceLowercase){
-    result = result.concat(userChoiceLowercase);
+    result = result.concat(lowercase);
   }
 
   if (userChoiceNumbers){
-    result = result.concat(userChoiceNumbers);
+    result = result.concat(numbers);
   }
 
   if (userChoiceSpecialCharacters){
-    result = result.concat(userChoiceSpecialCharacters);
+    result = result.concat(specialCharacters);
   }
 
-  var resultArray;
+  var resultArray = [];
   for (var i=0; i <userChoiceLengths; i++){
-    resultArray.push(result [Math.floor(Math.random() * userChoiceLengths)])
+    resultArray.push(result[Math.floor(Math.random() * result.length)])
   }
+
+  return resultArray.join("");
 }
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
-  passwordText.value = password.join(" ");
+  passwordText.value = password;
 }
 
 
