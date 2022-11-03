@@ -13,8 +13,9 @@ The following shows the appearance of the original file. There wll be no differe
 ## Usage
 To access this project, you can click on the final URL or the gitHub URL through the repository. In the HitHub repository, you can clone the repository to access locally or click on Settings > Pages > Visit site.
 
-https://github.com/yerimechoi/Password-Generator_C3
+https://yerimechoi.github.io/Password-Generator_C3/
 
+https://github.com/yerimechoi/Password-Generator_C3
 
 ## Credits
 N/A
